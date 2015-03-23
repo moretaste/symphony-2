@@ -1589,7 +1589,6 @@ class General
     public static function intval($value)
     {
         if (is_numeric($value) && preg_match('/^[0-9]+$/i', $value) === 1) {
-
             return intval($value);
         }
 
