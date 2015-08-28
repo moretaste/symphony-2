@@ -535,7 +535,12 @@ class FieldDate extends Field implements ExportableField, ImportableField
 
             // Convert given date to timestamp
         } elseif ($status == self::__OK__ && DateTimeObj::validate($data)) {
-            $timestamp = DateTimeObj::get('U', $data);
+           // $timestamp = DateTimeObj::get('U', $data);
+           // Give same behaviour as prepopulate date 
+           // So there is an extra parseDate when the user inputs only a year or year and month
+                $date = self::parseDate($data);
+                $date = $date['start'];
+                $timestamp = DateTimeObj::format($date, DateTimeObj::getSetting('datetime_format'));
         }
 
         // Valid date
